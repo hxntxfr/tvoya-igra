@@ -1,0 +1,233 @@
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Твоя игра</title>
+    </head>
+    <body>
+        <div id="sc">
+            <div id="page_select">
+                <div class="flex">
+                    <div class="table-names">
+                        <div class="name n1">Цветы и растения</div>
+                        <div class="name n2">Женские имена и героини</div>
+                        <div class="name n3">Мода и стиль</div>
+                        <div class="name n4">Праздники и традиции</div>
+                    </div>
+                    <div class="table-grid">
+                        <div class="btn" answer="Тюльпан" did="0" question="Какой цветок считается символом весны и женственности?" onclick="solve(this)">100</div>
+                        <div class="btn" answer="Мимоза" did="0" question=" Как называется красивый цветок, который часто дарят на 8 Марта и имеет яркие оранжевые или желтые лепестки?" onclick="solve(this)">200</div>
+                        <div class="btn" answer="Роза" did="0" question="Какой цветок считается символом любви и лета, и его часто используют для букетов?" onclick="solve(this)">300</div>
+                        <div class="btn" answer="Жасмин" did="0" question='Назовите растение, которое называется "женский цветок" и используется для изготовления парфюма.' onclick="solve(this)">500</div>
+
+                        <div class="btn" did="1" answer="Красная шапочка" question='Как зовут девочку из сказки "Красная шапочка"?' onclick="solve(this)">100</div>
+                        <div class="btn" did="1" answer="Маша (из сказки «Маша и медведь»)" question="Как зовут героиню русской народной сказки, которая отправилась в дремучий лес к Медведю, чтобы спасти своего братца?" onclick="solve(this)">200</div>
+                        <div class="btn" did="1" answer="Золушка" question="Какая сказочная героиня потеряла хрустальную туфельку на королевском балу?" onclick="solve(this)">300</div>
+                        <div class="btn" did="1" answer="Царица Савская" question="Имя легендарной африканской царицы, известной своей мудростью и красотой." onclick="solve(this)">500</div>
+
+                        <div class="btn" did="2" answer="Шарф" question="Как называется часть одежды, которая украшает и часто носится на шее?" onclick="solve(this)">100</div>
+                        <div class="btn" did="2" answer="Красного или зеленого цвета." question="Какого цвета обычно дарят ленты и банты для декора подарков?" onclick="solve(this)">200</div>
+                        <div class="btn" did="2" answer="Вечернее платье" question="Как называется торжественное женское платье, которое шьется специально для одного из самых важных вечеров в жизни — выпускного или свадьбы?" onclick="solve(this)">300</div>
+                        <div class="btn" did="2" answer="(или тренчкот)" question="Это вид легкого женского пальто, сшитого обычно из шерсти или кашемира, приталенного силуэта. Оно идеально подходит для прохладной весенней погоды, например, для прогулки 8 Марта." onclick="solve(this)">500</div>
+
+                        <div class="btn" did="3" answer="Международный женский день" question="Какой праздник отмечают 8 Марта?" onclick="solve(this)">100</div>
+                        <div class="btn" did="3" answer="Только для женщин" question="В Китае 8 Марта является сокращенным рабочим днем только для одной категории граждан. Для кого именно?" onclick="solve(this)">200</div>
+                        <div class="btn" did="3" answer="Германия" question="Лидер какой европейской страны официально сделал 8 Марта выходным днем для женщин, но при этом оставил этот день рабочим для мужчин?" onclick="solve(this)">300</div>
+                        <div class="btn" did="3" answer="Подарок" question="Как называется небольшой, но приятный знак внимания, который принято дарить женщинам наряду с цветами, часто упакованный в коробочку с бантом?" onclick="solve(this)">500</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <dialog id="win">
+            <div id="win_question"></div>
+            <div id="win_answer"></div>
+        </dialog>
+        <div id="fsbtn" onclick="enterFullscreen(document.querySelector('body'))">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M7 14H5v5h5v-2H7zm-2-4h2V7h3V5H5zm12 7h-3v2h5v-5h-2zM14 5v2h3v3h2V5z"/></svg>
+        </div>
+    </body>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+        :root {
+            --amb: #e8ca91;
+        }
+        body {
+            background-image: radial-gradient(#0007a9, #01024e);
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+            font-family: "Oswald", 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, system-ui;
+            margin: 0;
+            color: var(--amb);
+            font-size: 60px;
+            text-shadow: 0px 4px 8px rgb(232, 202, 145, 0.2);
+            font-weight: 600;
+            user-select: none;
+        }
+        #page_select {
+            width: 100vw;
+            height: 100vh;
+        }
+        .flex {
+            display: flex;
+            height: 100vh;
+        }
+        #sc {
+            
+            background-image: radial-gradient(#0007a9, #01024e);
+        }
+        .table-names {
+            grid-template-rows: repeat(4, 1fr);
+            display: grid;
+            border-right: 1px solid white;            
+            width: -webkit-fill-available;
+        }
+        .table-names .name {
+            display: flex;
+            border-bottom: 1px solid white;
+            justify-content: center;
+            align-items: center;
+        }
+        .table-grid {
+            display: grid;
+            
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+        }
+        .table-grid .btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-bottom: 1px solid white; 
+            border-right: 1px solid white; 
+        }
+        @keyframes blink {
+            0% { background: var(--amb); color: black; }
+            2% { background: var(--amb); color: black; }
+            3% { background: transparent; color: var(--amb); }
+            5% { background: transparent; color: var(--amb); }
+            6% { background: var(--amb); color: black; }
+            8% { background: var(--amb); color: black; }
+            9% { background: transparent; color: var(--amb); }
+            11% { background: transparent; color: var(--amb); }
+            12% { background: var(--amb); color: black; }
+            14% { background: var(--amb); color: black; }
+            15% { background: transparent; color: var(--amb); }
+            17% { background: transparent; color: var(--amb); }
+            18% { background: var(--amb); color: black; }
+            100% { background: var(--amb); color: black; }
+        }
+        #win {
+            background: transparent;
+            overflow: hidden;
+            height: 100vh;
+            background: radial-gradient(#0007a9, #01024e);
+            width: 100vw;
+            font-family: "Oswald", 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif, system-ui;
+            margin: 0;
+            color: var(--amb);
+            font-size: 60px;
+            text-shadow: 0px 4px 8px rgb(232, 202, 145, 0.2);
+            font-weight: 600;
+            user-select: none;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            display: flex;
+            border: 0;
+            outline: none;
+        }
+        #win_question {
+            text-align: center;
+        }
+        #win #window_answer {
+            display: none;
+        }
+        #fsbtn {
+            bottom: 1px;
+            opacity: 0.5;
+            padding: 8px;
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            display: flex;
+            position: absolute;
+            z-index: 4000;
+            border-radius: 50%;
+            left: 1px;
+        }
+    </style>
+
+    <script>
+        function enterFullscreen(element) {
+            if (element.requestFullscreen) {
+                element.requestFullscreen();
+            } else if (element.webkitRequestFullscreen) { /* Safari */
+                element.webkitRequestFullscreen();
+            } else if (element.msRequestFullscreen) { /* IE/Edge */
+                element.msRequestFullscreen();
+            }
+            resize();
+        }
+        const solved = [0, 0, 0, 0];
+        function solve(th) {
+            if (!th.hasAttribute('onclick')) return;
+            th.style.animation = "blink 5s";
+            setTimeout(function() {
+                page_select.style.display = "none";
+                win_answer.style.display = "none";
+                th.innerText = ""; // permanently
+                th.setAttribute('onclick', "");
+                th.style.animation = "none";
+                win_question.style.display = "block";
+
+                win_question.innerText = th.getAttribute("question");
+                win_answer.innerText = th.getAttribute("answer");
+                win.show();
+                win.onclick = function() {
+                    win_question.style.display = "none";
+                    win_answer.style.display = "block";
+
+                    win.onclick = function() {
+                        win_question.style.display = "none";
+                        win_answer.style.display = "none";
+                        
+                        page_select.style.display = "block";
+                        win.onclick = null;
+
+                        const did = Number(th.getAttribute('did'));
+                        solved[did] = solved[did]+1;
+                    }
+                }
+            }, 1200);
+            
+        }
+
+        function $(e) { return document.querySelector(e) }
+
+        setInterval(function() {
+            if (solved[0] == 4) {
+                $('.n1').innerText = "";
+                $('.n1').classList.add('solved');
+            }
+            if (solved[1] == 4) {
+                $('.n2').innerText = "";
+                $('.n2').classList.add('solved');
+            }
+            if (solved[2] == 4) {
+                $('.n3').innerText = "";
+                $('.n3').classList.add('solved');
+            }
+            if (solved[3] == 4) {
+                $('.n4').innerText = "";
+                $('.n4').classList.add('solved');
+            }
+        }, 500);
+
+        function resize() {
+            const grid = document.querySelector('.table-grid');
+            grid.style['min-width'] = grid.clientHeight + 'px';
+        } resize();
+    </script>
+</html>
