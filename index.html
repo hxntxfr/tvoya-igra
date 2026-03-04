@@ -5,6 +5,7 @@
         <title>Твоя игра</title>
     </head>
     <body>
+        <dialog id="fs"></dialog>
         <div id="sc">
             <div id="page_select">
                 <div class="flex">
@@ -119,7 +120,7 @@
             18% { background: var(--amb); color: black; }
             100% { background: var(--amb); color: black; }
         }
-        #win {
+        #win, #fs {
             background: transparent;
             overflow: hidden;
             height: 100vh;
@@ -169,6 +170,10 @@
                 element.msRequestFullscreen();
             }
             resize();
+        }
+        fs.show();
+        fs.onclick = function() {
+            fs.close();
         }
         const solved = [0, 0, 0, 0];
         function solve(th) {
@@ -232,3 +237,4 @@
     </script>
 
 </html>
+
